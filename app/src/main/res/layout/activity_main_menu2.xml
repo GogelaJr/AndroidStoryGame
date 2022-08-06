@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainMenu">
+
+    <TextView
+        android:id="@+id/healthAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-100dp"
+        android:text="TextView"
+        android:textColor="#ff0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/manaAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="TextView"
+        android:textColor="#00FFFF"
+        app:layout_constraintEnd_toStartOf="@+id/silverCoinAmount"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/healthIcon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/silverCoinAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="TextView"
+        android:textColor="#FFD700"
+        app:layout_constraintStart_toEndOf="@+id/manaIcon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/healthIcon"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toEndOf="@+id/healthAmount"
+        app:layout_constraintTop_toTopOf="@+id/manaAmount"
+        app:srcCompat="@drawable/heart" />
+
+    <ImageView
+        android:id="@+id/manaIcon"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toEndOf="@+id/manaAmount"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mana" />
+
+    <ImageView
+        android:id="@+id/silverCoinIcon"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toEndOf="@+id/silverCoinAmount"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/silvercoin" />
+
+    <TextView
+        android:id="@+id/mainTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="100dp"
+        android:text="TestText"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manaPotion" />
+
+    <TextView
+        android:id="@+id/manaPotion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manaAmount" />
+
+    <Button
+        android:id="@+id/choice1Button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Choice 1"
+        app:layout_constraintBottom_toTopOf="@+id/choice2Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/choice2Button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Choice 2"
+        app:layout_constraintBottom_toTopOf="@+id/choice3Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/choice3Button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Choice 3"
+        app:layout_constraintBottom_toTopOf="@+id/choice4Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/choice4Button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Choice 4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
