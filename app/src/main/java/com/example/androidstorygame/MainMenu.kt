@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import org.w3c.dom.Text
+
 
 
 class MainMenu : AppCompatActivity() {
@@ -44,7 +44,7 @@ class MainMenu : AppCompatActivity() {
 
         setContentView(R.layout.activity_main_menu2)
 
-        val storyinit = Prologue(this,)
+        val storyline = Prologue(this)
         sharedPref = getSharedPreferences("playerData", 0)
         editor = sharedPref.edit()
         val checkpoint = sharedPref.getInt("Checkpoint", 0)
@@ -53,15 +53,16 @@ class MainMenu : AppCompatActivity() {
 
         fun selectAction(action: String){
             when(action){
-                "Chapter 1" -> storyinit.beginning()
+                "Restart" -> storyline.beginning()
+                "Chapter 1" -> storyline.beginning()
 
-                "Mix the liquid with your Potion" -> storyinit.oneOne()
+                "Mix the liquid with your Potion" -> storyline.oneOne()
 
-                "What exactly would it do?" -> storyinit.oneTwo()
+                "What exactly would it do?" -> storyline.oneTwo()
 
-                "Are you sure it is a good idea?" -> storyinit.oneThree()
+                "Are you sure it is a good idea?" -> storyline.oneThree()
 
-                "No, I'll think of something else" -> storyinit.oneFour()
+                "No, I'll think of something else" -> storyline.oneFour()
 
 
 
@@ -115,11 +116,12 @@ class MainMenu : AppCompatActivity() {
             health = sharedPref.getInt("Health", 0)
             mana = sharedPref.getInt("Mana", 1)
             silver = sharedPref.getInt("Silver", 2)
-            manaPotion = sharedPref.getInt("Mana Potion", 3)
+            manaPotion = sharedPref.getInt("ManaPotion", 3)
             healthAmount.text = health.toString()
             manaAmount.text = mana.toString()
             silverAmount.text = (silver.toString())
-            storyinit.beginning()
+            manaPotionAmount.text = (manaPotion.toString())
+            storyline.beginning()
 
 
 
@@ -130,10 +132,11 @@ class MainMenu : AppCompatActivity() {
             health = sharedPref.getInt("Health", 0)
             mana = sharedPref.getInt("Mana", 1)
             silver = sharedPref.getInt("Silver", 2)
-            manaPotion = sharedPref.getInt("Mana Potion", 3)
+            manaPotion = sharedPref.getInt("ManaPotion", 3)
             healthAmount.text = health.toString()
             manaAmount.text = mana.toString()
             silverAmount.text = (silver.toString())
+            manaPotionAmount.text = (manaPotion.toString())
 
         }
     }

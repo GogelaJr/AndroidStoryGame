@@ -6,7 +6,7 @@ class Prologue(private val story: MainMenu) {
     var questionIdea =  false
     fun beginning(){
         functions.resetStats()
-
+        functions.showAll()
         story.storyText = "Trying to catch your breath you hear a  voice. " +
                 "\n-That was something." +
                 "\nYou look up, and barely see a"+
@@ -31,11 +31,14 @@ class Prologue(private val story: MainMenu) {
     fun oneOne(){
         functions.showAll()
         functions.resetAction()
-        story.storyText = "You start mixing your Mana Potion with the unkown Liquid " +
+        story.storyText = "You start mixing your Mana Potion with the unknown Liquid " +
                 "and it has no reaction. You look at Roomvar with doubt, he wouldn't trick you right? Why would he do that?"
         story.mainStory.text = story.storyText
         story.action1 = "Mix the liquid with your Potion"
-        functions.saveHealth( "What a horrible death", -2)
+
+
+
+
 
     }
     fun oneTwo(){
