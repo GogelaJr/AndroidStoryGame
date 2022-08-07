@@ -35,8 +35,7 @@ class Prologue(private val story: MainMenu) {
                 "and it has no reaction. You look at Roomvar with doubt, he wouldn't trick you right? Why would he do that?"
         story.mainStory.text = story.storyText
         story.action1 = "Mix the liquid with your Potion"
-
-
+        /// Finish Function
 
 
 
