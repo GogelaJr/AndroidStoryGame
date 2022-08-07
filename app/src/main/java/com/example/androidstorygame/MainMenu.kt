@@ -1,32 +1,40 @@
 package com.example.androidstorygame
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import org.w3c.dom.Text
 
 
 class MainMenu : AppCompatActivity() {
 
 
-    lateinit var mainStory : TextView;
+    lateinit var mainStory : TextView
+    lateinit var storyText : String
 
-    lateinit var choice1 : Button;
-    lateinit var choice2 : Button;
-    lateinit var choice3 : Button;
+    lateinit var choice1 : Button
+    lateinit var choice2 : Button
+    lateinit var choice3 : Button
     lateinit var choice4 : Button
-    lateinit var action1 : String;
-    lateinit var action2 : String;
-    lateinit var action3 : String;
-    lateinit var action4 : String;
-    var storyinit = Story(this);
-    val sharedPref = getSharedPreferences("playerData", 0)
-    val editor = sharedPref.edit()
-    val checkpoint = sharedPref.getInt("Checkpoint", 0)
-    var health: Int = 0;
+    lateinit var action1 : String
+    lateinit var action2 : String
+    lateinit var action3 : String
+    lateinit var action4 : String
+
+    lateinit var editor: SharedPreferences.Editor
+    lateinit var sharedPref: SharedPreferences
+
+    lateinit var healthAmount: TextView
+    lateinit var manaAmount : TextView
+    lateinit var silverAmount  : TextView
+    lateinit var manaPotionAmount: TextView
+
+    var health: Int = 0
     var mana: Int = 0
     var silver: Int = 0
-    var manaPotionAmount: Boolean = false;
+    var manaPotion: Int = 0
 
 
 
@@ -36,15 +44,25 @@ class MainMenu : AppCompatActivity() {
 
         setContentView(R.layout.activity_main_menu2)
 
+        val storyinit = Prologue(this,)
+        sharedPref = getSharedPreferences("playerData", 0)
+        editor = sharedPref.edit()
+        val checkpoint = sharedPref.getInt("Checkpoint", 0)
+
         // Actions
 
         fun selectAction(action: String){
             when(action){
                 "Chapter 1" -> storyinit.beginning()
-                "Mix the liquid with your Potion" -> storyinit.mixLiquid()
-                "What exactly would it do?" -> mainStory.setText("Question!")
-                "Are you sure it is a good idea?" -> mainStory.setText("Doubt!")
-                "No, i'll think of something else" -> mainStory.setText("Refuse!")
+
+                "Mix the liquid with your Potion" -> storyinit.oneOne()
+
+                "What exactly would it do?" -> storyinit.oneTwo()
+
+                "Are you sure it is a good idea?" -> storyinit.oneThree()
+
+                "No, I'll think of something else" -> storyinit.oneFour()
+
 
 
             }
@@ -52,10 +70,10 @@ class MainMenu : AppCompatActivity() {
 
         // Stats
 
-        val healthAmount  = findViewById<TextView>(R.id.healthAmount)
-        val manaAmount  = findViewById<TextView>(R.id.manaAmount)
-        val silverAmount  = findViewById<TextView>(R.id.silverCoinAmount)
-        val manaPotion = findViewById<TextView>(R.id.manaPotion)
+        healthAmount  = findViewById(R.id.healthAmount)
+        manaAmount  = findViewById(R.id.manaAmount)
+        silverAmount  = findViewById(R.id.silverCoinAmount)
+        manaPotionAmount = findViewById(R.id.manaPotion)
 
         // Story
 
@@ -91,38 +109,31 @@ class MainMenu : AppCompatActivity() {
 
 
 
-        if(checkpoint == 1){
-            editor.putInt("Checkpoint", 1)
-            editor.putInt("Health",  5);
-            editor.putInt("Mana", 0)
-            editor.putInt("Silver", 10)
-            editor.putBoolean("Mana Potion", true)
+        if(checkpoint == 0){
+            editor.putInt("Checkpoint", 0)
             editor.apply()
             health = sharedPref.getInt("Health", 0)
             mana = sharedPref.getInt("Mana", 1)
             silver = sharedPref.getInt("Silver", 2)
-            manaPotionAmount = sharedPref.getBoolean("Mana Potion", true)
-            if(manaPotionAmount){
-                manaPotion.setText("True")
-            }else{
-                manaPotion.setText("False")
-            }
-
-            healthAmount.setText(health.toString())
-            manaAmount.setText(mana.toString())
-            silverAmount.setText((silver.toString()))
-            selectAction("Chapter 1")
+            manaPotion = sharedPref.getInt("Mana Potion", 3)
+            healthAmount.text = health.toString()
+            manaAmount.text = mana.toString()
+            silverAmount.text = (silver.toString())
+            storyinit.beginning()
 
 
 
-        } else {
+
+
+
+        } else if(checkpoint == 1) {
             health = sharedPref.getInt("Health", 0)
             mana = sharedPref.getInt("Mana", 1)
             silver = sharedPref.getInt("Silver", 2)
-            manaPotionAmount = sharedPref.getBoolean("Mana Potion", true)
-            healthAmount.setText(health.toString())
-            manaAmount.setText(mana.toString())
-            silverAmount.setText((silver.toString()))
+            manaPotion = sharedPref.getInt("Mana Potion", 3)
+            healthAmount.text = health.toString()
+            manaAmount.text = mana.toString()
+            silverAmount.text = (silver.toString())
 
         }
     }
