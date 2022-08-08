@@ -54,6 +54,7 @@ class Functions(private val story: MainMenu) {
         story.healthAmount.text = story.health.toString()
         story.manaAmount.text = story.mana.toString()
         story.silverAmount.text = story.silver.toString()
+        story.manaPotionAmount.text = story.manaPotion.toString()
     }
     fun saveHealth(Str: String, vararg healthNumber : Int){
         for(amount in healthNumber){
@@ -70,12 +71,11 @@ class Functions(private val story: MainMenu) {
                 story.choice1.visibility = View.VISIBLE
                 story.editor.putInt("Health", 0)
                 story.editor.apply()
+                story.healthAmount.text = "0"
                 story.mainStory.text = Str
                 val restart = "Restart"
                 story.choice1.text = restart
                 story.action1 = restart
-
-
             }
         }
     }

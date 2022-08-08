@@ -54,7 +54,9 @@ class MainMenu : AppCompatActivity() {
         fun selectAction(action: String){
             when(action){
                 "Restart" -> storyline.beginning()
-                "Chapter 1" -> storyline.beginning()
+                "Prologue" -> storyline.beginning()
+
+                /// Prologue
 
                 "Mix the liquid with your Potion" -> storyline.oneOne()
 
@@ -64,6 +66,11 @@ class MainMenu : AppCompatActivity() {
 
                 "No, I'll think of something else" -> storyline.oneFour()
 
+                "Throw it at the Wall" -> storyline.throwMixture()
+
+                "ContinueToChapter1" -> storyline.throwMixture()
+
+                /// Chapter 1
 
 
             }
