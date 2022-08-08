@@ -4,11 +4,16 @@ import android.view.View
 
 class Prologue(private val story: MainMenu) {
     private val functions = Functions(story)
-    var questionMix = false
-    var questionIdea =  false
-    var checkWall = false
-    var mixture  = false
+    private var questionMix = false
+    private var questionIdea =  false
+    private var checkWall = false
+    private var mixture  = false
+    var mixturethrown = false
+    val imgresid = R.drawable.heart
+    /// Prologue
     fun beginning(){
+        story.image.setImageResource(imgresid)
+        story.image.setImageResource(0)
         questionIdea = false
         questionMix = false
         checkWall = false
@@ -297,9 +302,10 @@ class Prologue(private val story: MainMenu) {
         mixture = false
         val first = "Continue"
         val action = "ContinueToChapter1"
-        story.choice4.setVisibility(View.VISIBLE)
+        story.choice4.visibility = View.VISIBLE
         story.choice4.text  = first
         story.action4 = action
+        mixturethrown = true
     }
 }
 

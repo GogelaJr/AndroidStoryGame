@@ -3,6 +3,7 @@ package com.example.androidstorygame
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -30,6 +31,7 @@ class MainMenu : AppCompatActivity() {
     lateinit var manaAmount : TextView
     lateinit var silverAmount  : TextView
     lateinit var manaPotionAmount: TextView
+    lateinit var image  : ImageView
 
     var health: Int = 0
     var mana: Int = 0
@@ -82,6 +84,7 @@ class MainMenu : AppCompatActivity() {
         manaAmount  = findViewById(R.id.manaAmount)
         silverAmount  = findViewById(R.id.silverCoinAmount)
         manaPotionAmount = findViewById(R.id.manaPotion)
+        image = findViewById(R.id.imageView)
 
         // Story
 
