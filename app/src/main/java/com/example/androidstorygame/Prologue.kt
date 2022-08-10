@@ -8,8 +8,8 @@ class Prologue(private val story: MainMenu) {
     private var questionIdea =  false
     private var checkWall = false
     private var mixture  = false
-    var mixturethrown = false
-    val imgresid = R.drawable.heart
+    private var mixturethrown = false
+    private val imgresid = R.drawable.heart
     /// Prologue
     fun beginning(){
         story.image.setImageResource(imgresid)
