@@ -118,8 +118,21 @@ class Functions(private val story: MainMenu) {
     fun saveGame(vararg chapterNumber : Int){
         for(chapter in  chapterNumber){
             story.editor.putInt("Checkpoint", chapter)
+            story.editor.putInt("Health", story.health)
+            story.editor.putInt("Mana", story.mana)
+            story.editor.putInt("Silver", story.silver)
+            story.editor.putInt("SavedHealth", story.health)
+            story.editor.putInt("SavedMana", story.mana)
+            story.editor.putInt("SavedSilver", story.silver)
+
             story.editor.apply()
         }
+    }
+    fun reloadCheckpoint(){
+        story.health = story.sharedPref.getInt("SavedHealth",0)
+        story.mana = story.sharedPref.getInt("SavedMana",1)
+        story.silver = story.sharedPref.getInt("SavedSilver",2)
+
     }
 }
 

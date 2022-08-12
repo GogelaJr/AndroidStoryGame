@@ -9,7 +9,17 @@ class Prologue(private val story: MainMenu) {
     private var checkWall = false
     private var mixture  = false
     private var mixturethrown = false
-    private val imgresid = R.drawable.mixture
+    var planUnserious = false
+    var planDiscussed = false
+
+    private val city = R.drawable.city
+    private val cityDestroyed = R.drawable.destroyed_city
+    private val alien = R.drawable.alien
+    private val ending = R.drawable.end
+    private val preChallenge = R.drawable.preend
+    private val challenge = R.drawable.challenge
+    private val landscape = R.drawable.landscape
+    private val treeVillage = R.drawable.village
     /// Prologue
     fun beginning(){
         story.image.visibility = View.GONE
@@ -43,8 +53,7 @@ class Prologue(private val story: MainMenu) {
     fun oneOne(){
         functions.showAll()
         functions.resetAction()
-        story.image.setImageResource(imgresid)
-        story.image.visibility = View.VISIBLE
+        story.image.visibility = View.INVISIBLE
         story.storyText = "You start mixing your Mana Potion with the unknown Liquid " +
                 "and it has no reaction. You look at Roomvar with doubt, he wouldn't trick you right? Why would he do that?"
         story.mainStory.text = story.storyText
@@ -327,11 +336,11 @@ class Prologue(private val story: MainMenu) {
         story.choice4.visibility = View.VISIBLE
         story.choice4.text  = first
         story.action4 = action
-
     }
 
     fun chapter1(){
-        functions.saveGame(0)
+        functions.saveGame(1)
+        functions.reloadCheckpoint()
         functions.showAll()
         functions.resetAction()
         story.image.visibility = View.GONE
@@ -354,7 +363,7 @@ class Prologue(private val story: MainMenu) {
     }
 
     fun chapter1_1(){
-        functions.saveGame(1)
+
         functions.showAll()
         functions.resetAction()
         story.storyText = "You slowly Approach the Window, Roomvar looks at you, slightly smiling and pointing towards the horizon with a nod." +
@@ -363,12 +372,12 @@ class Prologue(private val story: MainMenu) {
                 "when it has no outlets. It was corrupted some time ago, you can see emitting magenta colored lights from the lake. Beautiful you think." +
                 "\nRoomvar breaks the silence" +
                 "\n-It's something isn't it?" +
-                "\n-Anyways, about the contract, I hope you haven't forgotten why we're here."
+                "\n-Anyways, about the contract, any ideas about the plan?"
         story.mainStory.text = story.storyText
-        val first = "Remind me why we are here"
-        val second = "Of course not! To Slay some Monsters and loot their belongings"
-        val third = "I do, but let's make sure we didn't overlook some details"
-        val fourth = "We better get ready, so we don't forget anything"
+        val first = "Discuss the contract"
+        val second = "Let's discuss it on our way"
+        val third = "A Simple Delivery Contract"
+        val fourth = "Improvisation is the key"
         story.choice1.text = first
         story.action1 = first
         story.choice2.text = second
@@ -378,7 +387,6 @@ class Prologue(private val story: MainMenu) {
         story.choice4.text =fourth
         story.action4 = fourth
     }
-    ///Cistri Keenstrider
     fun chapter1_2(){
         functions.showAll()
         functions.resetAction()
@@ -392,8 +400,8 @@ class Prologue(private val story: MainMenu) {
         story.mainStory.text = story.storyText
         val first = "You're right we should"
         val second = "Can't we do it on our way?"
-        val third = "Go in take the thing get out. Simple as that"
-        val fourth = "Remind me how much we are getting paid again?"
+        val third = "Go in take the thing get out Simple as that"
+        val fourth = "I'm tired let's just improvise"
         story.choice1.text = first
         story.action1 = first
         story.choice2.text = second
@@ -409,7 +417,57 @@ class Prologue(private val story: MainMenu) {
         story.storyText = "-Did you get any rest?" +
                 "\n-I had a nightmare, just like you did, it kept me awake all night long. Sadly we also ran out of the Honey brew, so I went on and scouted the surroundings." +
                 "\n-At least you did something useful. You can see Roomvar smiling." +
-                "\n"
+                "\n-Mind if we discussed what our next step is? You sense that Roomvar is uneasy. He was always cautious with planning." +
+                " Especially after leaving the Paladin ranks on his own will, because of higher ranking officers and how they barely cared about their men."
+        story.mainStory.text = story.storyText
+        val first =  "Right, we should discuss everything we know so far"
+        val second = "We can do it on our way to the city"
+        val third = "Nothing to discuss, its a simple contract"
+        val fourth = "It never goes as planned, We should improvise"
+        story.choice1.text = first
+        story.action1 = first
+        story.choice2.text = second
+        story.action2 = second
+        story.choice3.text = third
+        story.action3 = third
+        story.choice4.text = fourth
+        story.action4 = fourth
+    }
+    fun chapter1_4(){
+        functions.showAll()
+        functions.resetAction()
+        story.storyText="I should get some rest, you think to yourself and lay back down." +
+                "\nAfter a few minutes Roomvar wakes you up." +
+                "\n-Sorry for waking you up, but we really should discuss the plan." +
+                "\nYou try to ignore him, but he keeps talking." +
+                "\n-I might have accidentally burned one of your scrolls while i was trying to light up the Candle." +
+                "\nYou jump from up from anger realising that Roomvar is joking. " +
+                "He loves getting on peoples nerves, but always tries to make them also laugh."
+        story.mainStory.text = story.storyText
+        val first = "Now that I am awake, we can discuss the plan"
+        val second = "I hate you for a reason, but let's discuss it once we're on the road"
+        val third = "Go in, beat them up, take the stuff and leave. Easy"
+        val fourth = "Why don't we just improvise?"
+        story.choice1.text = first
+        story.action1 = first
+        story.choice2.text = second
+        story.action2 = second
+        story.choice3.text = third
+        story.action3 = third
+        story.choice4.text = fourth
+        story.action4 = fourth
+    }
+    fun chapter1_DiscussPlan(){
+        functions.showAll()
+        functions.resetAction()
+    }
+    fun chapter1_DiscussOnRoad(){
+        functions.showAll()
+        functions.resetAction()
+    }
+    fun chapter1_DiscussionUnserious(){
+        functions.showAll()
+        functions.resetAction()
     }
 }
 

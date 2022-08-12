@@ -76,11 +76,36 @@ class MainMenu : AppCompatActivity() {
                 /// Chapter 1
 
                 "Approach the Window and look outside."  -> storyline.chapter1_1()
+
                 "Check your Backpack" -> storyline.chapter1_2()
-                "Ask Roomvar if he got some rest" -> storyline.chapter1_1()
-                "Lay on the bedroll" -> storyline.chapter1_1()
 
+                "Ask Roomvar if he got some rest" -> storyline.chapter1_3()
 
+                "Lay on the bedroll" -> storyline.chapter1_4()
+
+                "Discuss the contract" -> storyline.chapter1_DiscussPlan()
+
+                "You're right we should" -> storyline.chapter1_DiscussPlan()
+
+                "Right, we should discuss everything we know so far" -> storyline.chapter1_DiscussPlan()
+
+                "Now that I am awake, we can discuss the plan" -> storyline.chapter1_DiscussPlan()
+
+                "Let's discuss it on our way" -> storyline.chapter1_DiscussOnRoad()
+
+                "Can't we do it on our way?" -> storyline.chapter1_DiscussOnRoad()
+
+                "We can do it on our way to the city" -> storyline.chapter1_DiscussOnRoad()
+
+                "I hate you for a reason, but let's discuss it once we're on the road" -> storyline.chapter1_DiscussOnRoad()
+
+                "A Simple Delivery Contract" -> storyline.chapter1_DiscussionUnserious()
+
+                "Go in take the thing get out Simple as that" -> storyline.chapter1_DiscussionUnserious()
+
+                "Nothing to discuss, its a simple contract" -> storyline.chapter1_DiscussionUnserious()
+
+                "Go in, beat them up, take the stuff and leave. Easy" -> storyline.chapter1_DiscussionUnserious()
             }
         }
 
@@ -143,10 +168,9 @@ class MainMenu : AppCompatActivity() {
 
 
         } else if(checkpoint == 1) {
-            health = sharedPref.getInt("Health", 0)
-            mana = sharedPref.getInt("Mana", 1)
-            silver = sharedPref.getInt("Silver", 2)
-            manaPotion = sharedPref.getInt("ManaPotion", 3)
+            health = sharedPref.getInt("SavedHealth", 0)
+            mana = sharedPref.getInt("SavedMana", 1)
+            silver = sharedPref.getInt("SavedSilver", 2)
             healthAmount.text = health.toString()
             manaAmount.text = mana.toString()
             silverAmount.text = (silver.toString())
