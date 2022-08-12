@@ -9,11 +9,10 @@ class Prologue(private val story: MainMenu) {
     private var checkWall = false
     private var mixture  = false
     private var mixturethrown = false
-    private val imgresid = R.drawable.heart
+    private val imgresid = R.drawable.mixture
     /// Prologue
     fun beginning(){
-        story.image.setImageResource(imgresid)
-        story.image.setImageResource(0)
+        story.image.visibility = View.GONE
         questionIdea = false
         questionMix = false
         checkWall = false
@@ -21,7 +20,7 @@ class Prologue(private val story: MainMenu) {
         functions.resetStats()
         functions.showAll()
         story.storyText = "Trying to catch your breath you hear a  voice. " +
-                "\n-That was something." +
+                "\nThat was something." +
                 "\nYou look up, and barely see a"+
                 " silhouette of a person. You recognize the voice it's Roomvar." +
                 "\n-Roomvar? Is that you?" +
@@ -44,6 +43,8 @@ class Prologue(private val story: MainMenu) {
     fun oneOne(){
         functions.showAll()
         functions.resetAction()
+        story.image.setImageResource(imgresid)
+        story.image.visibility = View.VISIBLE
         story.storyText = "You start mixing your Mana Potion with the unknown Liquid " +
                 "and it has no reaction. You look at Roomvar with doubt, he wouldn't trick you right? Why would he do that?"
         story.mainStory.text = story.storyText
@@ -102,6 +103,7 @@ class Prologue(private val story: MainMenu) {
     fun oneTwo(){
         functions.showAll()
         functions.resetAction()
+        story.image.visibility = View.GONE
         story.storyText = "-What Exactly should i expect from it, if i mix them? You ask." +
                 "\n-I thought you knew a bit of Alchemy. Roomvar sighs." +
                 "\n-It will create an explosion if it is thrown at any physical object, so do not try to throw it at a spirit! He laughs."
@@ -153,6 +155,7 @@ class Prologue(private val story: MainMenu) {
     fun oneThree(){
         functions.showAll()
         functions.resetAction()
+        story.image.visibility = View.GONE
         story.storyText = "-Are you sure about it? Roomvar notices doubt in your voice." +
                 "\n-I am, worked for me plenty of times. You can't tell if Roomvar is joking or not"
         story.mainStory.text = story.storyText
@@ -202,6 +205,7 @@ class Prologue(private val story: MainMenu) {
     fun oneFour(){
         functions.showAll()
         functions.resetAction()
+        story.image.visibility = View.GONE
         story.storyText= "No, there should be another way out of here. You think to yourself." +
                 "\nYou look around  and see some bricks, that are slightly pushed outwards." +
                 "\nAfter inspecting them, you realise they can be climbed."
@@ -290,15 +294,15 @@ class Prologue(private val story: MainMenu) {
 
     fun throwMixture(){
         functions.hideAll()
+        story.image.visibility = View.GONE
         story.storyText = "You throw the Mixture at the wall, nothing happens." +
                 "\n-Roomvar this isn't Working! You yell."  +
                 "\n-Here have this Torch it should do th.. Ah!!!"  +
                 "\nYou see that something struck him, you can't see what." +
                 "He drops the torch and turns back to fight what sounds like a Goblin." +
                 "\nThe Torch lands directly on the splashed explosive mixture creating a fireball" +
-                " and throws you back hitting your head on a metal, losing your consciousness"
+                " you get thrown back hitting your head on metal, losing your consciousness."
         story.mainStory.text = story.storyText
-        functions.saveHealth("No death",-3)
         mixture = false
         val first = "Continue"
         val action = "ContinueToChapter1"
@@ -306,6 +310,106 @@ class Prologue(private val story: MainMenu) {
         story.choice4.text  = first
         story.action4 = action
         mixturethrown = true
+    }
+    fun climbWall(){
+        story.image.visibility = View.GONE
+        functions.hideAll()
+        functions.resetAction()
+        story.storyText = "You grab one of the Bricks, while putting your foot on the other,  slowly pushing yourself upwards." +
+                " You are trying to keep the pace.\nYou never were a good climber, knowing that you stop a few times on  your way to catch your breath." +
+                "\nYou almost reach the ledge, where Roomvar is waiting for you.\nHe extends his hand towards you, to help you up."  +
+                "\nYou grab his hand, and feel his strength, slowly pulling you up." +
+                "\nSuddenly you feel something warm dripping from his arm, you see that he's bleeding. You see him clinching his teeth and losing grip." +
+                "\nYou look at Roomvar, laying motionless on the ledge, while you are falling back down, finally you hit the bottom feeling a hard thump."
+        story.mainStory.text = story.storyText
+        val first = "Continue"
+        val action = "ContinueToChapter1"
+        story.choice4.visibility = View.VISIBLE
+        story.choice4.text  = first
+        story.action4 = action
+
+    }
+
+    fun chapter1(){
+        functions.saveGame(0)
+        functions.showAll()
+        functions.resetAction()
+        story.image.visibility = View.GONE
+        story.storyText = "You jump out of your bedroll, you scan your surroundings, realising it was a bad dream." +
+                "\nYou look at Roomvar, he's sitting by the window, looking at the horizon." +
+                "\nIts still dark inside, but you can tell it's already getting brighter outside."
+        story.mainStory.text = story.storyText
+        val first = "Approach the Window and look outside."
+        val second = "Check your Backpack"
+        val third  = "Ask Roomvar if he got some rest"
+        val fourth = "Lay on the bedroll"
+        story.choice1.text = first
+        story.action1 = first
+        story.choice2.text = second
+        story.action2 = second
+        story.choice3.text = third
+        story.action3 = third
+        story.choice4.text = fourth
+        story.action4 = fourth
+    }
+
+    fun chapter1_1(){
+        functions.saveGame(1)
+        functions.showAll()
+        functions.resetAction()
+        story.storyText = "You slowly Approach the Window, Roomvar looks at you, slightly smiling and pointing towards the horizon with a nod." +
+                "\nYou see its dawn, however it's not long until everybody wakes up. " +
+                "You hear birds chirping, you can see the Nameless Sea in the distance, but you always wondered, why was it called a Sea, " +
+                "when it has no outlets. It was corrupted some time ago, you can see emitting magenta colored lights from the lake. Beautiful you think." +
+                "\nRoomvar breaks the silence" +
+                "\n-It's something isn't it?" +
+                "\n-Anyways, about the contract, I hope you haven't forgotten why we're here."
+        story.mainStory.text = story.storyText
+        val first = "Remind me why we are here"
+        val second = "Of course not! To Slay some Monsters and loot their belongings"
+        val third = "I do, but let's make sure we didn't overlook some details"
+        val fourth = "We better get ready, so we don't forget anything"
+        story.choice1.text = first
+        story.action1 = first
+        story.choice2.text = second
+        story.action2 = second
+        story.choice3.text = third
+        story.action3 = third
+        story.choice4.text =fourth
+        story.action4 = fourth
+    }
+    ///Cistri Keenstrider
+    fun chapter1_2(){
+        functions.showAll()
+        functions.resetAction()
+        story.storyText = "You look at your backpack, its where you left it, untouched." +
+                "You see a your scrolls next to it, few potions, silver coins and a dagger." +
+                "\n-Had a bad dream? So did I, it kept me up all night. " +
+                "Here, have some water to calm down a bit" +
+                "\nYou drink the cold river water from Roomvar's leather canteen, which has the initials C.K. engraved " +
+                "you've known Roomvar for a long time, but everytime you asked him about the initials, he avoided the question. " +
+                "\n-We should really get a plan of what we are going to do once we are there. Roomvar takes out the contract out of his satchel"
+        story.mainStory.text = story.storyText
+        val first = "You're right we should"
+        val second = "Can't we do it on our way?"
+        val third = "Go in take the thing get out. Simple as that"
+        val fourth = "Remind me how much we are getting paid again?"
+        story.choice1.text = first
+        story.action1 = first
+        story.choice2.text = second
+        story.action2  = second
+        story.choice3.text = third
+        story.action3 = third
+        story.choice4.text = fourth
+        story.action4 = fourth
+    }
+    fun chapter1_3(){
+        functions.showAll()
+        functions.resetAction()
+        story.storyText = "-Did you get any rest?" +
+                "\n-I had a nightmare, just like you did, it kept me awake all night long. Sadly we also ran out of the Honey brew, so I went on and scouted the surroundings." +
+                "\n-At least you did something useful. You can see Roomvar smiling." +
+                "\n"
     }
 }
 

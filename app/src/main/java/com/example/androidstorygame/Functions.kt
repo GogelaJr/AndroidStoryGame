@@ -42,8 +42,8 @@ class Functions(private val story: MainMenu) {
 
     fun resetStats(){
         story.editor.putInt("Checkpoint", 0)
-        story.editor.putInt("Health", 5)
-        story.editor.putInt("Mana", 0)
+        story.editor.putInt("Health", 10)
+        story.editor.putInt("Mana", 15)
         story.editor.putInt("Silver", 10)
         story.editor.putInt("ManaPotion", 1)
         story.editor.apply()
@@ -54,7 +54,7 @@ class Functions(private val story: MainMenu) {
         story.healthAmount.text = story.health.toString()
         story.manaAmount.text = story.mana.toString()
         story.silverAmount.text = story.silver.toString()
-        story.manaPotionAmount.text = story.manaPotion.toString()
+
     }
     fun saveHealth(Str: String, vararg healthNumber : Int){
         for(amount in healthNumber){
@@ -113,8 +113,12 @@ class Functions(private val story: MainMenu) {
             val updatedPotions = story.sharedPref.getInt("ManaPotion", 0)
             story.manaPotion = updatedPotions
 
-            story.manaPotionAmount.text = updatedPotions.toString()
-
+        }
+    }
+    fun saveGame(vararg chapterNumber : Int){
+        for(chapter in  chapterNumber){
+            story.editor.putInt("Checkpoint", chapter)
+            story.editor.apply()
         }
     }
 }

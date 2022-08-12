@@ -30,7 +30,6 @@ class MainMenu : AppCompatActivity() {
     lateinit var healthAmount: TextView
     lateinit var manaAmount : TextView
     lateinit var silverAmount  : TextView
-    lateinit var manaPotionAmount: TextView
     lateinit var image  : ImageView
 
     var health: Int = 0
@@ -68,11 +67,18 @@ class MainMenu : AppCompatActivity() {
 
                 "No, I'll think of something else" -> storyline.oneFour()
 
+                "Climb the Wall"  -> storyline.climbWall()
+
                 "Throw it at the Wall" -> storyline.throwMixture()
 
-                "ContinueToChapter1" -> storyline.throwMixture()
+                "ContinueToChapter1" -> storyline.chapter1()
 
                 /// Chapter 1
+
+                "Approach the Window and look outside."  -> storyline.chapter1_1()
+                "Check your Backpack" -> storyline.chapter1_2()
+                "Ask Roomvar if he got some rest" -> storyline.chapter1_1()
+                "Lay on the bedroll" -> storyline.chapter1_1()
 
 
             }
@@ -83,7 +89,7 @@ class MainMenu : AppCompatActivity() {
         healthAmount  = findViewById(R.id.healthAmount)
         manaAmount  = findViewById(R.id.manaAmount)
         silverAmount  = findViewById(R.id.silverCoinAmount)
-        manaPotionAmount = findViewById(R.id.manaPotion)
+
         image = findViewById(R.id.imageView)
 
         // Story
@@ -126,11 +132,9 @@ class MainMenu : AppCompatActivity() {
             health = sharedPref.getInt("Health", 0)
             mana = sharedPref.getInt("Mana", 1)
             silver = sharedPref.getInt("Silver", 2)
-            manaPotion = sharedPref.getInt("ManaPotion", 3)
             healthAmount.text = health.toString()
             manaAmount.text = mana.toString()
             silverAmount.text = (silver.toString())
-            manaPotionAmount.text = (manaPotion.toString())
             storyline.beginning()
 
 
@@ -146,7 +150,7 @@ class MainMenu : AppCompatActivity() {
             healthAmount.text = health.toString()
             manaAmount.text = mana.toString()
             silverAmount.text = (silver.toString())
-            manaPotionAmount.text = (manaPotion.toString())
+            storyline.chapter1()
 
         }
     }
