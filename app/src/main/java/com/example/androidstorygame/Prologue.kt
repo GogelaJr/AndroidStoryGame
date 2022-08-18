@@ -11,6 +11,9 @@ class Prologue(private val story: MainMenu) {
     private var mixturethrown = false
     var planUnserious = false
     var planDiscussed = false
+    var sneakWestfirst = false
+    var impersonateSouth = false
+    var diversionEast = false
 
     private val city = R.drawable.city
     private val cityDestroyed = R.drawable.destroyed_city
@@ -27,6 +30,8 @@ class Prologue(private val story: MainMenu) {
         questionMix = false
         checkWall = false
         mixture = false
+        planUnserious = false
+        planDiscussed = false
         functions.resetStats()
         functions.showAll()
         story.storyText = "Trying to catch your breath you hear a  voice. " +
@@ -460,6 +465,26 @@ class Prologue(private val story: MainMenu) {
     fun chapter1_DiscussPlan(){
         functions.showAll()
         functions.resetAction()
+        planDiscussed = true
+        story.storyText = "Roomvar puts the contract and a small sketch, which looks like a map on the table. " +
+                "It looks like a small warehouse, with 3 entrances " +
+                "from the east, south and west. The writing reads: 'West side is the darkest during the night," +
+                " South is constantly patrolled by guards and dogs, East is connected to another Building. " +
+                "\n-The other Building should be an Armory or some sorts. It could be of some use." +
+                " What do you think?"
+        story.mainStory.text = story.storyText
+        val first = "sneak in from the West at night"
+        val second = "take the South and try to impersonate a Guard"
+        val third = "create a diversion at the Armory"
+        val fourth = "scout the location before we make a decision"
+        story.choice1.text =  first
+        story.action1 = first
+        story.choice2.text = second
+        story.action2  = second
+        story.choice3.text = third
+        story.action3 =  third
+        story.choice4.text = fourth
+        story.action4 = fourth
     }
     fun chapter1_DiscussOnRoad(){
         functions.showAll()
